@@ -1,26 +1,44 @@
 import { Injectable } from '@nestjs/common';
 import { CreateBookReviewDto } from './dto/create-book-review.dto';
+import { InjectRepository } from '@nestjs/typeorm';
 import { UpdateBookReviewDto } from './dto/update-book-review.dto';
+import { Repository } from 'typeorm';
+import { BookReview } from './entities/book-review.entity';
 
 @Injectable()
 export class BookReviewService {
-  create(createBookReviewDto: CreateBookReviewDto) {
-    return 'This action adds a new bookReview';
+  constructor(
+    // Inject any necessary repositories or services here
+    @InjectRepository(BookReview)
+    private bookReviewRepository: Repository<BookReview>,
+  ) {}
+  async create(createBookReviewDto: CreateBookReviewDto) {
+    const bookReview = this.bookReviewRepository.create(createBookReviewDto);
+    return await this.bookReviewRepository.save(bookReview).then((review) => {
+      return this.bookReviewRepository
+        .findOneBy({ id: review.id })
+        .catch((error) => {
+          // Handle error
+          console.error('Error finding the created review:', error);
+        });
+    });
   }
 
-  findAll() {
-    return `This action returns all bookReview`;
+  async findAll() {
+    return await this.bookReviewRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} bookReview`;
+  async findOne(id: number) {
+    return await this.bookReviewRepository.findOneBy({ id });
   }
 
-  update(id: number, updateBookReviewDto: UpdateBookReviewDto) {
-    return `This action updates a #${id} bookReview`;
+  async update(id: number, updateBookReviewDto: UpdateBookReviewDto) {
+    await this.bookReviewRepository.update(id, updateBookReviewDto);
+    return await this.bookReviewRepository.findOneBy({ id });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} bookReview`;
+  async remove(id: number) {
+    await this.bookReviewRepository.delete(id);
+    return { deleted: true };
   }
 }

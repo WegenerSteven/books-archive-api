@@ -1,0 +1,41 @@
+@url = http://localhost:3000
+
+### GET users
+GET {{url}}/users
+### GET users with ID
+GET {{url}}/users/1
+### POST users
+POST {{url}}/users
+{
+  "name": "John Doe",
+  "email": "john.doe@example.com",
+  "password": "Password123",
+  "isActive": true
+}
+### UPDATE users with ID
+PUT {{url}}/users/1
+{
+  "name": "John Doe Updated",
+  "email": "john.doe.updated@example.com",
+  "password": "Password1234",
+  "isActive": false
+}
+### DELETE users with ID
+DELETE {{url}}/users/1
+
+### ADVANCED BOOK SEARCH
+GET {{url}}/books/search?title=Harry%20Potter&author=Rowling&category=Fantasy
+
+### GET BOOKS BY SPECIFIC AUTHOR
+GET {{url}}/authors/1/books
+
+### ADD REVIEW TO BOOK
+POST {{url}}/books/1/reviews
+{
+  "reviewer": "Jane Doe",
+  "rating": 5,
+  "comment": "Excellent book!"
+}
+
+### GET BOOKS IN CATEGORY
+GET {{url}}/categories/1/books

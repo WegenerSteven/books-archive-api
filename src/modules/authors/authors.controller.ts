@@ -13,6 +13,7 @@ import { UpdateAuthorDto } from './dto/update-author.dto';
 
 @Controller('authors')
 export class AuthorsController {
+  // Injecting the AuthorsService to handle author-related operations
   constructor(private readonly authorsService: AuthorsService) {}
 
   @Post()
