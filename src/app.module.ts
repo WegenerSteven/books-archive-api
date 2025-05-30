@@ -8,9 +8,11 @@ import { BooksModule } from './modules/books/books.module';
 import { AuthorsModule } from './modules/authors/authors.module';
 import { BookReviewModule } from './modules/book-review/book-review.module';
 import { CategoryModule } from './modules/category/category.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({ isGlobal: true, envFilePath: '.env' }),
     DatabaseModule,
     UsersModule,
     ProfilesModule,
