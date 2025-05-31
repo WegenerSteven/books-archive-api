@@ -8,7 +8,7 @@ import {
 @Entity('book_reviews')
 export class BookReview {
   @PrimaryGeneratedColumn('increment')
-  bookId: number;
+  id: number;
 
   @Column({ type: 'text' })
   content: string;
@@ -16,6 +16,6 @@ export class BookReview {
   @Column({ type: 'int' })
   rating: number;
 
-  @CreateDateColumn('date')
+  @Column('date')
   createdAt: Date;
 }

@@ -14,14 +14,7 @@ export class BookReviewService {
   ) {}
   async create(createBookReviewDto: CreateBookReviewDto) {
     const bookReview = this.bookReviewRepository.create(createBookReviewDto);
-    return await this.bookReviewRepository.save(bookReview).then((review) => {
-      return this.bookReviewRepository
-        .findOneBy({ id: review.id })
-        .catch((error) => {
-          // Handle error
-          console.error('Error finding the created review:', error);
-        });
-    });
+    return await this.bookReviewRepository.save(bookReview);
   }
 
   async findAll() {

@@ -21,7 +21,7 @@ export class CategoryService {
   }
 
   findOne(id: number) {
-    return this.categoryRepository.findOne(id);
+    return this.categoryRepository.findOne({ where: { id } });
   }
 
   update(id: number, updateCategoryDto: UpdateCategoryDto) {

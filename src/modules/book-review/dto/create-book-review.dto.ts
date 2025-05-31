@@ -2,7 +2,7 @@ import { IsString, IsInt, Min, Max, IsUUID } from 'class-validator';
 
 export class CreateBookReviewDto {
   @IsUUID()
-  bookId: number;
+  id: number;
 
   @IsString()
   content: string;

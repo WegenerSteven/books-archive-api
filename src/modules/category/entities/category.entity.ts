@@ -4,7 +4,7 @@ import { Book } from '../../books/entities/book.entity';
 @Entity('categories')
 export class Category {
   @PrimaryGeneratedColumn('uuid')
-  categoryId: number;
+  id: number;
 
   @Column({ type: 'varchar', length: 100 })
   name: string;
