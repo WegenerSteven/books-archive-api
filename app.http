@@ -6,6 +6,8 @@ GET {{url}}/users
 GET {{url}}/users/1
 ### POST users
 POST {{url}}/users
+Content-Type: application/json
+
 {
   "name": "John Doe",
   "email": "john.doe@example.com",
@@ -13,9 +15,11 @@ POST {{url}}/users
   "isActive": true
 }
 ### UPDATE users with ID
-PUT {{url}}/users/1
+PATCH {{url}}/users/1
+Content-Type: application/json
+  
 {
-  "name": "John Doe Updated",
+  "name": "John Doe",
   "email": "john.doe.updated@example.com",
   "password": "Password1234",
   "isActive": false
