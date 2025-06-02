@@ -1,15 +1,6 @@
-import {
-  IsOptional,
-  IsString,
-  IsUrl,
-  IsDateString,
-  IsUUID,
-} from 'class-validator';
+import { IsOptional, IsString, IsUrl, IsDateString } from 'class-validator';
 
 export class CreateProfileDto {
-  @IsUUID()
-  id: string;
-
   @IsOptional()
   @IsString()
   bio?: string;
