@@ -9,23 +9,23 @@ POST {{url}}/users
 Content-Type: application/json
 
 {
-  "name": "John Doe",
-  "email": "john.doe@example.com",
+  "name": "Benard Steven",
+  "email": "steven@example.com",
   "password": "Password123",
   "isActive": true
 }
 ### UPDATE users with ID
 PATCH {{url}}/users/1
 Content-Type: application/json
-  
+
 {
-  "name": "John Doe",
-  "email": "john.doe.updated@example.com",
+  "name": "Benard Steven",
+  "email": "steven@example.com",
   "password": "Password1234",
   "isActive": false
 }
 ### DELETE users with ID
-DELETE {{url}}/users/1
+DELETE {{url}}/users/2
 
 ### ADVANCED BOOK SEARCH
 GET {{url}}/books/search?title=Harry%20Potter&author=Rowling&category=Fantasy
