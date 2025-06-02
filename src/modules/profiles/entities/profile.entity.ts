@@ -1,9 +1,16 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { User } from 'src/modules/users/entities/user.entity';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToOne,
+  Relation,
+} from 'typeorm';
 
 @Entity('profiles')
 export class Profile {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id: number;
 
   @Column({ type: 'text', nullable: true })
   bio?: string;
@@ -16,4 +23,7 @@ export class Profile {
 
   @Column({ type: 'varchar', nullable: true })
   location?: string;
+
+  @OneToOne(() => User, (user) => user.profile)
+  user: Relation<User>;
 }

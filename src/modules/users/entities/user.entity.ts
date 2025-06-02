@@ -1,7 +1,15 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToOne,
+  JoinColumn,
+  Relation,
+} from 'typeorm';
 import { IsEmail, IsAlphanumeric, Length, Matches } from 'class-validator';
+import { Profile } from 'src/modules/profiles/entities/profile.entity';
 
-@Entity('users')
+@Entity()
 export class User {
   @PrimaryGeneratedColumn('increment')
   id: number;
@@ -25,4 +33,11 @@ export class User {
 
   @Column()
   isActive: boolean;
+
+  @OneToOne(() => Profile, (profile) => profile.id, {
+    cascade: true,
+    onDelete: 'CASCADE',
+  })
+  @JoinColumn()
+  profile: Relation<Profile>;
 }
